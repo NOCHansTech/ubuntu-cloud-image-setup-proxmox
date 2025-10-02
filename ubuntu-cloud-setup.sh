@@ -53,16 +53,18 @@ IMAGE_NAME="${UBUNTU_CODE}-server-cloudimg-amd64.img"
 WORKING_IMAGE="${UBUNTU_CODE}.img"
 
 # Input user
-read -p "${YELLOW}Masukkan VM ID: ${NC}" VM_ID
-read -p "${YELLOW}Masukkan nama VM: ${NC}" VM_NAME
-read -p "${YELLOW}Masukkan jumlah RAM (MB): ${NC}" RAM
-read -p "${YELLOW}Masukkan jumlah CPU cores: ${NC}" CPU
-read -p "${YELLOW}Masukkan nama storage untuk disk & cloudinit (contoh: local-lvm): ${NC}" STORAGE
-read -p "${YELLOW}Masukkan ukuran resize disk (contoh: 50G): ${NC}" RESIZE_SIZE
-read -p "${YELLOW}Masukkan nama bridge network (contoh: vmbr0): ${NC}" BRIDGE
-read -p "${YELLOW}Masukkan VLAN ID (kosongkan jika tidak ada): ${NC}" VLAN_ID
-read -p "${YELLOW}Masukkan ci user (contoh: ubuntu): ${NC}" CIUSER
-read -p "${YELLOW}Masukkan ci password: ${NC}" CIPASSWORD
+read -p $'\033[1;33mMasukkan pilihan (1-4): \033[0m' UBUNTU_VER
+read -p $'\033[1;33mMasukkan VM ID: \033[0m' VM_ID
+read -p $'\033[1;33mMasukkan nama VM: \033[0m' VM_NAME
+read -p $'\033[1;33mMasukkan jumlah RAM (MB): \033[0m' RAM
+read -p $'\033[1;33mMasukkan jumlah CPU cores: \033[0m' CPU
+read -p $'\033[1;33mMasukkan nama storage untuk disk & cloudinit (contoh: local-lvm): \033[0m' STORAGE
+read -p $'\033[1;33mMasukkan ukuran resize disk (contoh: 50G): \033[0m' RESIZE_SIZE
+read -p $'\033[1;33mMasukkan nama bridge network (contoh: vmbr0): \033[0m' BRIDGE
+read -p $'\033[1;33mMasukkan VLAN ID (kosongkan jika tidak ada): \033[0m' VLAN_ID
+read -p $'\033[1;33mMasukkan ci user (contoh: ubuntu): \033[0m' CIUSER
+read -p $'\033[1;33mMasukkan ci password: \033[0m' CIPASSWORD
+
 
 # Validasi wajib isi
 if [[ -z "$VM_ID" || -z "$VM_NAME" || -z "$RAM" || -z "$CPU" || -z "$STORAGE" || -z "$RESIZE_SIZE" || -z "$BRIDGE" || -z "$CIUSER" || -z "$CIPASSWORD" ]]; then
@@ -118,6 +120,7 @@ qm create "$VM_ID" \
 # Import disk image ke VM
 echo -e "${GREEN}[INFO] Mengimport disk ke VM $VM_ID di storage $STORAGE...${NC}"
 qm disk import "$VM_ID" "$WORKING_IMAGE" "$STORAGE"
+qm set "$VM_ID" --scsi0 "${STORAGE}:vm-${VM_ID}-disk-0"
 
 # Cleanup
 rm -f "$WORKING_IMAGE"
