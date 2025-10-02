@@ -26,6 +26,7 @@ print_branding() {
 
 print_branding
 
+
 # Check and install libguestfs-tools if not installed
 if ! command -v virt-customize &> /dev/null; then
     echo -e "${YELLOW}[INFO] libguestfs-tools belum terpasang. Menginstall...${NC}"
@@ -34,10 +35,10 @@ fi
 
 # Pilih versi Ubuntu
 echo -e "${YELLOW}Pilih versi Ubuntu yang akan digunakan:${NC}"
-echo "1) Ubuntu 18.04 LTS (bionic)"
-echo "2) Ubuntu 20.04 LTS (focal)"
-echo "3) Ubuntu 22.04 LTS (jammy)"
-echo "4) Ubuntu 24.04 LTS (noble)"
+echo "1) Ubuntu 18.04 LTS - bionic"
+echo "2) Ubuntu 20.04 LTS - focal"
+echo "3) Ubuntu 22.04 LTS - jammy"
+echo "4) Ubuntu 24.04 LTS - noble"
 read -p "$(echo -e ${YELLOW}Masukkan pilihan (1-4): ${NC})" UBUNTU_VER
 
 case $UBUNTU_VER in
