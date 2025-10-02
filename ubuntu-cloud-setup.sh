@@ -38,7 +38,6 @@ echo "1) Ubuntu 18.04 LTS - bionic"
 echo "2) Ubuntu 20.04 LTS - focal"
 echo "3) Ubuntu 22.04 LTS - jammy"
 echo "4) Ubuntu 24.04 LTS - noble"
-read -p "${YELLOW}Masukkan pilihan (1-4): ${NC}" UBUNTU_VER
 
 case $UBUNTU_VER in
     1) UBUNTU_CODE="bionic";;
