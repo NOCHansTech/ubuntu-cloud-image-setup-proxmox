@@ -120,7 +120,7 @@ qm create "$VM_ID" \
 # Import disk image ke VM
 echo -e "${GREEN}[INFO] Mengimport disk ke VM $VM_ID di storage $STORAGE...${NC}"
 qm disk import "$VM_ID" "$WORKING_IMAGE" "$STORAGE"
-qm set "$VM_ID" --scsi0 "${STORAGE}:vm-${VM_ID}-disk-0"
+qm set "$VM_ID" --scsi0 "${STORAGE}:${VM_ID}/vm-${VM_ID}-disk-0.raw"
 
 # Cleanup
 rm -f "$WORKING_IMAGE"
