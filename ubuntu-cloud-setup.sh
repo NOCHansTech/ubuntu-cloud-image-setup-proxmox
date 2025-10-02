@@ -38,6 +38,7 @@ echo "1) Ubuntu 18.04 LTS - bionic"
 echo "2) Ubuntu 20.04 LTS - focal"
 echo "3) Ubuntu 22.04 LTS - jammy"
 echo "4) Ubuntu 24.04 LTS - noble"
+read -p $'\033[1;33mMasukkan pilihan (1-4): \033[0m' UBUNTU_VER
 
 case $UBUNTU_VER in
     1) UBUNTU_CODE="bionic";;
@@ -52,7 +53,6 @@ IMAGE_NAME="${UBUNTU_CODE}-server-cloudimg-amd64.img"
 WORKING_IMAGE="${UBUNTU_CODE}.img"
 
 # Input user
-read -p $'\033[1;33mMasukkan pilihan (1-4): \033[0m' UBUNTU_VER
 read -p $'\033[1;33mMasukkan VM ID: \033[0m' VM_ID
 read -p $'\033[1;33mMasukkan nama VM: \033[0m' VM_NAME
 read -p $'\033[1;33mMasukkan jumlah RAM (MB): \033[0m' RAM
