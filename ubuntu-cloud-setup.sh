@@ -26,7 +26,6 @@ print_branding() {
 
 print_branding
 
-
 # Check and install libguestfs-tools if not installed
 if ! command -v virt-customize &> /dev/null; then
     echo -e "${YELLOW}[INFO] libguestfs-tools belum terpasang. Menginstall...${NC}"
@@ -39,7 +38,7 @@ echo "1) Ubuntu 18.04 LTS - bionic"
 echo "2) Ubuntu 20.04 LTS - focal"
 echo "3) Ubuntu 22.04 LTS - jammy"
 echo "4) Ubuntu 24.04 LTS - noble"
-read -p "$(echo -e ${YELLOW}Masukkan pilihan (1-4): ${NC})" UBUNTU_VER
+read -p "${YELLOW}Masukkan pilihan (1-4): ${NC}" UBUNTU_VER
 
 case $UBUNTU_VER in
     1) UBUNTU_CODE="bionic";;
@@ -54,16 +53,16 @@ IMAGE_NAME="${UBUNTU_CODE}-server-cloudimg-amd64.img"
 WORKING_IMAGE="${UBUNTU_CODE}.img"
 
 # Input user
-read -p "$(echo -e ${YELLOW}Masukkan VM ID: ${NC})" VM_ID
-read -p "$(echo -e ${YELLOW}Masukkan nama VM: ${NC})" VM_NAME
-read -p "$(echo -e ${YELLOW}Masukkan jumlah RAM (MB): ${NC})" RAM
-read -p "$(echo -e ${YELLOW}Masukkan jumlah CPU cores: ${NC})" CPU
-read -p "$(echo -e ${YELLOW}Masukkan nama storage untuk disk & cloudinit (contoh: local-lvm): ${NC})" STORAGE
-read -p "$(echo -e ${YELLOW}Masukkan ukuran resize disk (contoh: 50G): ${NC})" RESIZE_SIZE
-read -p "$(echo -e ${YELLOW}Masukkan nama bridge network (contoh: vmbr0): ${NC})" BRIDGE
-read -p "$(echo -e ${YELLOW}Masukkan VLAN ID (kosongkan jika tidak ada): ${NC})" VLAN_ID
-read -p "$(echo -e ${YELLOW}Masukkan ci user (contoh: ubuntu): ${NC})" CIUSER
-read -p "$(echo -e ${YELLOW}Masukkan ci password: ${NC})" CIPASSWORD
+read -p "${YELLOW}Masukkan VM ID: ${NC}" VM_ID
+read -p "${YELLOW}Masukkan nama VM: ${NC}" VM_NAME
+read -p "${YELLOW}Masukkan jumlah RAM (MB): ${NC}" RAM
+read -p "${YELLOW}Masukkan jumlah CPU cores: ${NC}" CPU
+read -p "${YELLOW}Masukkan nama storage untuk disk & cloudinit (contoh: local-lvm): ${NC}" STORAGE
+read -p "${YELLOW}Masukkan ukuran resize disk (contoh: 50G): ${NC}" RESIZE_SIZE
+read -p "${YELLOW}Masukkan nama bridge network (contoh: vmbr0): ${NC}" BRIDGE
+read -p "${YELLOW}Masukkan VLAN ID (kosongkan jika tidak ada): ${NC}" VLAN_ID
+read -p "${YELLOW}Masukkan ci user (contoh: ubuntu): ${NC}" CIUSER
+read -p "${YELLOW}Masukkan ci password: ${NC}" CIPASSWORD
 
 # Validasi wajib isi
 if [[ -z "$VM_ID" || -z "$VM_NAME" || -z "$RAM" || -z "$CPU" || -z "$STORAGE" || -z "$RESIZE_SIZE" || -z "$BRIDGE" || -z "$CIUSER" || -z "$CIPASSWORD" ]]; then
